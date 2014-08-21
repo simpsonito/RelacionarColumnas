@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Drag-and-Drop 2</title>
+<script type="text/javascript" src="dragColumnas.js"></script>
+<link rel="stylesheet" type="text/css" href="estilos.css" />
+</head>
+<body onLoad="OnLoad()">
+<table class="tablaDragable">
+	<tr>
+
+        <td><div class="DropTarget" data-destino="cuadro1"><img class="palomita" style="display:none" src="palomita.png" />1. Relación en la que una especie se beneficia y la otra es eliminada:<br /></div></td>
+        <td class="celdaIzquierda"><div class="Dragable" data-tipo="cuadro1">depredación<img class="tache" style="display:none" src="tache.png" /></div></td>
+
+	</tr>
+    <tr>
+
+        <td><div class="DropTarget" data-destino="cuadro2"><img class="palomita" style="display:none" src="palomita.png" />2. Relación que se presenta cuando dos organismos de diferente especie tienen los mismos requerimientos alimenticios:<br /></div></td>
+        <td class="celdaIzquierda"><div class="Dragable" data-tipo="cuadro2">competencia<img class="tache" style="display:none" src="tache.png" /></div></td>
+
+    </tr>
+    <tr>
+
+        <td><div class="DropTarget" data-destino="cuadro3"><img class="palomita" style="display:none" src="palomita.png" />3. Relación que se presenta en forma de exclusión o antibiosis:<br /></div></td>
+        <td class="celdaIzquierda"><div class="Dragable" data-tipo="cuadro3">amensalismo<img class="tache" style="display:none" src="tache.png" /></div></td>
+
+	</tr>
+    <tr>
+
+        <td><div class="DropTarget" data-destino="cuadro4"><img class="palomita" style="display:none" src="palomita.png" />4. Cuando una de las especies se beneficia y la otra no se perjudica:<br /></div></td>
+        <td class="celdaIzquierda"><div class="Dragable" data-tipo="cuadro4">comensalismo<img class="tache" style="display:none" src="tache.png" /></div></td>
+
+    </tr>
+    <tr>
+
+        <td><div class="DropTarget" data-destino="cuadro5"><img class="palomita" style="display:none" src="palomita.png" />5. Interacción necesaria para que un organismo viva y, en ocasiones, puede ocasionar la muerte del hospedero:<br /></div></td>
+        <td class="celdaIzquierda"><div class="Dragable" data-tipo="cuadro5">parasitismo<img class="tache" style="display:none" src="tache.png" /></div></td>
+
+    </tr>
+
+</table>
+
+<script>
+//document.write("<p>Plataforma: "+navigator.platform+"</p>");
+</script>
+<div id="retroalimentacion"></div>
+<div id="mensajes"></div>
+</body>
+</html>

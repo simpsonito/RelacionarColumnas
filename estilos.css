@@ -1,0 +1,66 @@
+@charset "UTF-8";
+body{
+    font-family:"Helvetica", Arial, sans-serif;
+    font-size:0.9em;
+}
+.Dragable{
+    cursor: move;
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    display: inline-block;
+    color: #FFF;
+    font-weight: bold;
+
+    background-color:#666;
+    font-size: 16px;
+    width: 200px;
+    padding:10px;
+    margin-bottom: 0 auto;
+    vertical-align: middle;
+    border: 2px solid #EAEAEA;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.75);
+}
+
+.DropTarget{
+    background-color: #fff;
+    overflow:auto;
+
+    width: 300px;
+    height: 90px;
+    padding:10px;
+    margin-bottom:5px;
+
+    border: 2px dashed #999;
+    border-radius: 10px;
+}
+body{
+    text-align:center;
+}
+.tablaDragable {
+    width:570px;
+    padding:10px;
+    display:inline-block;
+
+
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    color: #333;
+    border: solid 2px #CC003D;
+    border-style:dotted solid;
+    -moz-border-radius: 10px 0px 10px 0px;
+    -webkit-border-radius: 10px 0px 10px 0px;
+    -o-border-radius: 10px 0px 10px 0px;
+    border-radius: 10px 0px 10px 0px;
+    -moz-box-shadow: 0 2px 2px #9c9c9c;
+    -webkit-box-shadow: 0 2px 2px #9c9c9c;
+
+}
+.tablaDragable tr{
+    border: 1px solid #000;
+}
+.tablaDragable tr td.celdaIzquierda{
+    width:100px;
+}
