@@ -46,17 +46,13 @@ function revolver(){
     }
     var revueltas = shuffle(interior);
 
-    for (nodo in respuestas) {
+    for (var nodo in respuestas) {
         respuestas[nodo].innerHTML = revueltas[nodo];
         //console.log(respuestas[nodo] + ", " + nodo + ", " + respuestas);
     }
 }
 function shuffle(array) {
-    var currentIndex = array.length
-        , temporaryValue
-        , randomIndex
-        ;
-
+    var currentIndex = array.length, temporaryValue, randomIndex;
     // While there remain elements to shuffle...
     while (0 !== currentIndex) {
 
@@ -106,7 +102,7 @@ function MakeDragable(oBox){
 function UnmakeDragable(oBox){
     if (is_touch_device()){
         oBox.ontouchstart = null;
-        oBox.ontouchmove = null
+        oBox.ontouchmove = null;
         oBox.ontouchend = null;
     }else{
         oBox.onmousemove = null;
@@ -119,17 +115,14 @@ function UnmakeDragable(oBox){
 function is_touch_device() {
     return 'ontouchstart' in window; // works on most browsers
     //|| 'onmsgesturechange' in window; // funciona en ie10, no en 11
-};
-
-
+}
 function TouchStart(e){
     var oPos = GetObjPos(e.target);
     iClickOffsetX = e.targetTouches[0].pageX - oPos.x;
     iClickOffsetY = e.targetTouches[0].pageY - oPos.y;
 }
-
 function DragStart(o,e){
-    if(!e) var e = window.event;
+    if(!e) e = window.event;
     oDragItem = o;
 
     if (e.offsetX){
@@ -160,7 +153,7 @@ function DragStop2(e){
 function DragMove(o,e){
     if (oDragItem==null) return;
 
-    if(!e) var e = window.event;
+    if(!e) e = window.event;
     var x = e.clientX + document.body.scrollLeft - document.body.clientLeft - iClickOffsetX;
     var y = e.clientY + document.body.scrollTop  - document.body.clientTop - iClickOffsetY;
 
@@ -280,8 +273,8 @@ function GetObjPos(obj){
     var w = obj.offsetWidth;
     var h = obj.offsetHeight;
     if (obj.offsetParent) {
-        x = obj.offsetLeft
-        y = obj.offsetTop
+        x = obj.offsetLeft;
+        y = obj.offsetTop;
         while (obj = obj.offsetParent){
             x += obj.offsetLeft;
             y += obj.offsetTop;
