@@ -11,13 +11,18 @@ var iClickOffsetY;
 
 var buenas;
 var contestadas;
-var total;
+var TOTAL = 5;
+var MAX_INTENTOS = 2;
 
 var bodyOriginal;
 
 function OnLoad(){
-    bodyOriginal = document.getElementsByTagName("body")[0].innerHTML;
+    bodyOriginal = document.body.innerHTML;
     iniciar();
+    window.onresize = function(){
+        //console.log("cambió tamaño");
+        ajustarDestinos();
+    };
 }
 
 function iniciar(){
@@ -28,13 +33,12 @@ function iniciar(){
 
     buenas = 0;
     contestadas = 0;
-    total = 5;
 
     revolver();
     SetupDragDrop();
 }
 function reiniciar(){
-    document.getElementsByTagName("body")[0].innerHTML = bodyOriginal;
+    document.body.innerHTML = bodyOriginal;
     iniciar();
 }
 
@@ -70,19 +74,20 @@ function shuffle(array) {
 }
 
 function SetupDragDrop(){
+    ajustarDestinos();
+    var botones = document.getElementsByClassName("Dragable");
+    for(var i = 0; i<botones.length; i++){
+        MakeDragable(botones[i]);
+        botones[i].padreOriginal = botones[i].parentNode;
+        botones[i].intentos = 0;
+        //console.log(i+" - "+botones[i].parentNode + " - " + botones[i].padreOriginal);
+    }
+}
+function ajustarDestinos(){
     oDragTargets = [];
-
-    var oList = document.getElementsByTagName("div");
-    for(var i=0; i<oList.length; i++){
-        var o = oList[i];
-        if (o.className == "DropTarget"){
-            oDragTargets[oDragTargets.length] = GetObjPos(o);
-        }else if (o.className == "Dragable"){
-            MakeDragable(o);
-            o.padreOriginal = o.parentNode;
-            o.intentos = 0;
-            mensajear(o.parentNode + " - " + o.padreOriginal);
-        }
+    var destinos = document.getElementsByClassName("DropTarget");
+    for(var i = 0; i<destinos.length; i++){
+        oDragTargets.push(GetObjPos(destinos[i]));
     }
 }
 
@@ -212,19 +217,20 @@ function HandleDragStop(){
         if(oDragItem.getAttribute("data-tipo") == oDragTarget.getAttribute("data-destino")){
 			oDragTarget.getElementsByClassName('palomita').item(0).style.display = "";
             mensajear("padre: "+ oDragTarget.getElementsByClassName('palomita').item(0));
-			UnmakeDragable(oDragItem);
             OnTargetOut();
             OnTargetDrop();
             oDragTarget = null;
             contestadas++;
             buenas++;
+            UnmakeDragable(oDragItem);
+            oDragItem.className = "Indragable";
             revisar();
         } else {
             oDragItem.padreOriginal.appendChild(oDragItem);
             oDragItem.style.position="";
             oDragItem.intentos++;
             mensajear("intentos: "+oDragItem.intentos);
-            if(oDragItem.intentos >= 2){//A la segunda oportunidad que falle, se cuenta como mala
+            if(oDragItem.intentos >= MAX_INTENTOS){//A la maxima oportunidad que falle, se cuenta como mala
                 UnmakeDragable(oDragItem);
                 oDragItem.getElementsByClassName('tache').item(0).style.display = "";
                 mensajear("intentos sobrepasados: ");
@@ -243,15 +249,15 @@ function HandleDragStop(){
     oDragItem = null;
 }
 function revisar(){
-    if(contestadas == total){
+    if(contestadas == TOTAL){
         var mensaje = "";
-        if(buenas == total){
+        if(buenas == TOTAL){
             mensaje = "¡Muy bien!";
         } else {
             mensaje = "Inténtalo de nuevo.";
         }
         //mensajear('Terminótodo');
-        retroalimentar(mensaje+' Obtuviste '+ buenas + " de " + total +'.<br /><input id="botonReiniciar" type="button" value="Otra vez" onClick="reiniciar()">');
+        retroalimentar(mensaje+' Obtuviste '+ buenas + " de " + TOTAL +'.<br /><input id="botonReiniciar" type="button" value="Otra vez" onClick="reiniciar()">');
         document.getElementById('botonReiniciar').scrollIntoView();
     }
 }
