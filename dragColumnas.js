@@ -11,13 +11,14 @@ var iClickOffsetY;
 
 var buenas;
 var contestadas;
-var TOTAL = 5;
+var total;
 var MAX_INTENTOS = 2;
 
 var bodyOriginal;
 
 function OnLoad(){
     bodyOriginal = document.body.innerHTML;
+    total = document.getElementsByClassName("DropTarget").length;
     iniciar();
     window.onresize = function(){
         //console.log("cambió tamaño");
@@ -249,15 +250,15 @@ function HandleDragStop(){
     oDragItem = null;
 }
 function revisar(){
-    if(contestadas == TOTAL){
+    if(contestadas == total){
         var mensaje = "";
-        if(buenas == TOTAL){
+        if(buenas == total){
             mensaje = "¡Muy bien!";
         } else {
             mensaje = "Inténtalo de nuevo.";
         }
         //mensajear('Terminótodo');
-        retroalimentar(mensaje+' Obtuviste '+ buenas + " de " + TOTAL +'.<br /><input id="botonReiniciar" type="button" value="Otra vez" onClick="reiniciar()">');
+        retroalimentar(mensaje+' Obtuviste '+ buenas + " de " + total +'.<br /><input id="botonReiniciar" type="button" value="Otra vez" onClick="reiniciar()">');
         document.getElementById('botonReiniciar').scrollIntoView();
     }
 }
