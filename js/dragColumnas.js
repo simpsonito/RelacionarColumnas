@@ -16,6 +16,8 @@ var MAX_INTENTOS = 2;
 
 var bodyOriginal;
 
+window.addEventListener("load", OnLoad, false);
+
 function OnLoad(){
     bodyOriginal = document.body.innerHTML;
     total = document.getElementsByClassName("DropTarget").length;
@@ -214,7 +216,7 @@ function HandleDragStop(){
         return;
     }
     if (oDragTarget){
-        mensajear("oDragTarget true: "+ oDragItem.getAttribute("data-tipo") + " - " + oDragTarget.getAttribute("data-destino"));
+        //mensajear("oDragTarget true: "+ oDragItem.getAttribute("data-tipo") + " - " + oDragTarget.getAttribute("data-destino"));
         if(oDragItem.getAttribute("data-tipo") == oDragTarget.getAttribute("data-destino")){
 			oDragTarget.getElementsByClassName('palomita').item(0).style.display = "";
             mensajear("padre: "+ oDragTarget.getElementsByClassName('palomita').item(0));
@@ -234,7 +236,8 @@ function HandleDragStop(){
             if(oDragItem.intentos >= MAX_INTENTOS){//A la maxima oportunidad que falle, se cuenta como mala
                 UnmakeDragable(oDragItem);
                 oDragItem.getElementsByClassName('tache').item(0).style.display = "";
-                mensajear("intentos sobrepasados: ");
+                oDragItem.innerHTML = "<b style='color: #F96'>"+oDragItem.getAttribute("data-tipo")+".</b> "+oDragItem.innerHTML;
+                //mensajear("intentos sobrepasados: ");
                 contestadas++;
                 revisar();
             }
@@ -252,15 +255,21 @@ function HandleDragStop(){
 function revisar(){
     if(contestadas == total){
         var mensaje = "";
-        if(buenas == total){
-            mensaje = "¡Muy bien!";
-        } else {
-            mensaje = "Inténtalo de nuevo.";
+        switch (buenas) {
+            case 6:
+                mensaje = "¡Excelente!";
+                break;
+            case 5:
+                mensaje = "¡Bien!";
+                break;
+            default://Cualquier otro (5 ó menos)
+                mensaje = "Revisa nuevamente el tema.";
         }
         //mensajear('Terminótodo');
         retroalimentar(mensaje+' Obtuviste '+ buenas + " de " + total +'.<br /><input id="botonReiniciar" type="button" value="Otra vez" onClick="reiniciar()">');
         document.getElementById('botonReiniciar').scrollIntoView();
     }
+    ajustarDestinos();
 }
 
 function TouchEnd(e){

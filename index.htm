@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Drag and Drop de relacionar columnas">
+    <meta name="keywords" content="Drag and Drop, relacionar columnas, Javascript, HTML5, Dise&ntilde;o responsivo">
+    <meta name="author" content="Adib Abud Jaso">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <script type="text/javascript" src="js/dragColumnas.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/estilo.css">
+    <link rel="stylesheet" type="text/css" href="css/estilosDragColumnas.css" />
+    <title>Unidad 1 :: Autoevaluaci&oacute;n 2</title>
+</head>
+<body>
+<div id="main">
+    <p class="subtitulo_01">
+        Unidad 1 <br>
+        <span class="titulo_01">Autoevaluaci&oacute;n 2</span>
+    </p>
+    <p align="left">
+        <strong>Categor&iacute;as anal&iacute;ticas de Marx</strong><br />
+        Arrastra los  elementos de la columna del lado derecho al lugar que les corresponda en la  columna del lado izquierdo. Dispones de un intento por cada reactivo para  realizar la actividad. Al finalizar podr&aacute;s conocer tu desempe&ntilde;o.
+    </p>
+    <table class="tablaDragable">
+        <tr>
+            <td><div class="DropTarget" data-destino="1"><img class="palomita" style="display:none" src="palomita.png" />1.	Motivo por el cual Marx critica la propuesta dial&eacute;ctica de Hegel: </div></td>
+            <td class="celdaIzquierda"><div class="Dragable" data-tipo="1">separaci&oacute;n del sentido real<img class="tache" style="display:none" src="tache.png" /></div></td>
+        </tr>
+        <tr>
+            <td><div class="DropTarget" data-destino="2"><img class="palomita" style="display:none" src="palomita.png" />2.	Ejemplo de s&iacute;ntesis del proceso hist&oacute;rico: </div></td>
+            <td class="celdaIzquierda"><div class="Dragable" data-tipo="2">sociedad sin clases<img class="tache" style="display:none" src="tache.png" /></div></td>
+        </tr>
+        <tr>
+            <td><div class="DropTarget" data-destino="3"><img class="palomita" style="display:none" src="palomita.png" />3.	Para Marx, el capital es: </div></td>
+            <td class="celdaIzquierda"><div class="Dragable" data-tipo="3">fuerza social<img class="tache" style="display:none" src="tache.png" /></div></td>
+        </tr>
+        <tr>
+            <td><div class="DropTarget" data-destino="4"><img class="palomita" style="display:none" src="palomita.png" />4.	Acci&oacute;n que posibilita el valor de un bien: </div></td>
+            <td class="celdaIzquierda"><div class="Dragable" data-tipo="4">trabajo<img class="tache" style="display:none" src="tache.png" /></div></td>
+        </tr>
+        <tr>
+            <td><div class="DropTarget" data-destino="5"><img class="palomita" style="display:none" src="palomita.png" />5.	Determina el valor de los bienes:  </div></td>
+            <td class="celdaIzquierda"><div class="Dragable" data-tipo="5">tiempo socialmente necesario<img class="tache" style="display:none" src="tache.png" /></div></td>
+        </tr>
+        <tr>
+            <td><div class="DropTarget" data-destino="6"><img class="palomita" style="display:none" src="palomita.png" />6.	Actor fundamental para Marx, ya que difundi&oacute; la ideolog&iacute;a de una &eacute;poca: </div></td>
+            <td class="celdaIzquierda"><div class="Dragable" data-tipo="6">Estado burgu&eacute;s<img class="tache" style="display:none" src="tache.png" /></div></td>
+        </tr>
+        <tr>
+            <td><div data-destino="nula">&nbsp;</div></td>
+            <td class="celdaIzquierda"><div class="Dragable" data-tipo="Sobrante">sociedad primitiva<img class="tache" style="display:none" src="tache.png" /></div></td>
+        </tr>
+
+    </table>
+
+    <div id="retroalimentacion"></div>
+    <div id="mensajes"></div>
+
+</div>
+
+</body>
+</html>
