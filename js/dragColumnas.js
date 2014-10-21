@@ -218,15 +218,13 @@ function HandleDragStop(){
     if (oDragTarget){
         //mensajear("oDragTarget true: "+ oDragItem.getAttribute("data-tipo") + " - " + oDragTarget.getAttribute("data-destino"));
         if(oDragItem.getAttribute("data-tipo") == oDragTarget.getAttribute("data-destino")){
-			oDragTarget.getElementsByClassName('palomita').item(0).style.display = "";
-            mensajear("padre: "+ oDragTarget.getElementsByClassName('palomita').item(0));
             OnTargetOut();
             OnTargetDrop();
             oDragTarget = null;
             contestadas++;
             buenas++;
             UnmakeDragable(oDragItem);
-            oDragItem.className = "Indragable";
+            oDragItem.className = "Indragable bien";
             revisar();
         } else {
             oDragItem.padreOriginal.appendChild(oDragItem);
@@ -235,10 +233,12 @@ function HandleDragStop(){
             mensajear("intentos: "+oDragItem.intentos);
             if(oDragItem.intentos >= MAX_INTENTOS){//A la maxima oportunidad que falle, se cuenta como mala
                 UnmakeDragable(oDragItem);
-                oDragItem.getElementsByClassName('tache').item(0).style.display = "";
+                oDragItem.className += " mal";
                 oDragItem.innerHTML = "<b style='color: #F96'>"+oDragItem.getAttribute("data-tipo")+".</b> "+oDragItem.innerHTML;
-                //mensajear("intentos sobrepasados: ");
-                contestadas++;
+                //console.log("intentos sobrepasados: ");
+                if(oDragItem.getAttribute("data-tipo") != "Sobrante"){//No cuenta la que sobra
+                    contestadas++;
+                }
                 revisar();
             }
         }
