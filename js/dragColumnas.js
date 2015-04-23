@@ -169,12 +169,10 @@ function DragMove(o,e){
 }
 
 function HandleDragMove(x,y){
-    with(oDragItem.style){
-        zIndex = 1000;
-        position="absolute";
-        left=x+"px";
-        top=y+"px";
-    }
+    oDragItem.style.zIndex = 1000;
+    oDragItem.style.position = "absolute";
+    oDragItem.style.left = x + "px";
+    oDragItem.style.top = y + "px";
 
     for (var i=0; i< oDragTargets.length; i++){
         var oTarget = oDragTargets[i];
