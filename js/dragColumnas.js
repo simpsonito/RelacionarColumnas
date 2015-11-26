@@ -253,17 +253,14 @@ function HandleDragStop(){
 function revisar(){
     if(contestadas == total){
         var mensaje = "";
-        switch (buenas) {
-            case 6:
-                mensaje = "¡Excelente!";
-                break;
-            case 5:
-                mensaje = "¡Bien!";
-                break;
-            default://Cualquier otro (5 ó menos)
-                mensaje = "Revisa nuevamente el tema.";
+        if(buenas === total){
+            mensaje = "¡Excelente!";
+        } else if(buenas === total-1){
+            mensaje = "¡Bien!";
+        } else {
+            mensaje = "Revisa nuevamente el tema.";
         }
-        //mensajear('Terminótodo');
+        //mensajear('Terminó completo');
         retroalimentar(mensaje+' Obtuviste '+ buenas + " de " + total +'.<br /><input id="botonReiniciar" type="button" value="Otra vez" onClick="reiniciar()">');
         document.getElementById('botonReiniciar').scrollIntoView();
     }
