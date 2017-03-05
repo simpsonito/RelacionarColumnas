@@ -194,7 +194,7 @@ function TouchMove(e){
     e.preventDefault();
     var x = e.targetTouches[0].pageX - iClickOffsetX;
     var y = e.targetTouches[0].pageY - iClickOffsetY;
-    oDragItem = e.targetTouches[0].target;
+    oDragItem = e.currentTarget;
     HandleDragMove(x,y);
 }
 
