@@ -162,9 +162,16 @@ function DragMove(o,e){
     if (oDragItem==null) return;
 
     if(!e) e = window.event;
-    var x = e.clientX + document.body.scrollLeft - document.body.clientLeft - iClickOffsetX;
-    var y = e.clientY + document.body.scrollTop  - document.body.clientTop - iClickOffsetY;
-
+    var x, y;
+    if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1){
+        x = e.clientX + window.pageXOffset - document.body.clientLeft - iClickOffsetX;
+        y = e.clientY + document.documentElement.scrollTop - iClickOffsetY;
+        //console.log("fire", e.clientY , window.pageYOffset , document.documentElement.scrollTop , iClickOffsetY);
+    } else {
+        x = e.clientX + window.pageXOffset - document.body.clientLeft - iClickOffsetX;
+        y = e.clientY + window.pageYOffset - document.body.clientTop - iClickOffsetY;
+        //console.log("others", e.clientY , window.pageYOffset , document.body.clientTop , iClickOffsetY);
+    }
     HandleDragMove(x,y);
 }
 
